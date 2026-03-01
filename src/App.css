@@ -374,9 +374,9 @@ body::-webkit-scrollbar {
 
 .about-text {
    font-family: var(--font-display);
-   font-size: clamp(1.6rem, 5.5vw, 3.8rem);
+   font-size: clamp(1.5rem, 3.8vw, 3rem);
    font-weight: 700;
-   line-height: 1.12;
+   line-height: 1.15;
    color: var(--color-text);
    max-width: 75ch;
 }
@@ -391,8 +391,8 @@ body::-webkit-scrollbar {
 
    .about-text {
       max-width: 100%;
-      font-size: clamp(1.65rem, 5.5vw, 2.4rem);
-      line-height: 1.15;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      line-height: 1.18;
    }
 }
 
@@ -414,9 +414,9 @@ body::-webkit-scrollbar {
 
 .domain-text {
    font-family: var(--font-display);
-   font-size: clamp(1.1rem, 5vw, 3.2rem);
+   font-size: clamp(1.1rem, 3.2vw, 2.6rem);
    font-weight: 700;
-   line-height: 1.15;
+   line-height: 1.18;
    color: var(--color-text);
    margin-bottom: clamp(2rem, 5vh, 3rem);
    max-width: 75ch;

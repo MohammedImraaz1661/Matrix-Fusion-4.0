@@ -243,7 +243,7 @@ function App() {
           <div id="main">
             <Header />
             <SocialIcons />
-            <a href="./public/brochure.pdf" download className="brochure-fixed js-cursor-extend-sm">
+            <a href="/brochure.pdf" download className="brochure-fixed js-cursor-extend-sm">
               <span>BROCHURE</span>
             </a>
 
