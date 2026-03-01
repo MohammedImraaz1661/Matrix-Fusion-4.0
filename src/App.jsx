@@ -194,22 +194,24 @@ function App() {
         }
       }
 
-      // Section Reveal Animations
-      const sections = document.querySelectorAll('.about-section, .domain-section, .cood-section, .collab-section, .footer-section');
-      sections.forEach((section) => {
-        gsap.set(section, { opacity: 0, y: 50 });
-        gsap.to(section, {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
+      // Section Reveal Animations (desktop only)
+      if (!isTouch) {
+        const sections = document.querySelectorAll('.about-section, .domain-section, .cood-section, .collab-section, .footer-section');
+        sections.forEach((section) => {
+          gsap.set(section, { opacity: 0, y: 50 });
+          gsap.to(section, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          });
         });
-      });
+      }
     }
   }, [loading, isTouch]);
 

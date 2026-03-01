@@ -11,6 +11,12 @@ const Pics = () => {
     const section = sectionRef.current;
     if (!section) return;
 
+    const isTouchDevice = ('ontouchstart' in window) ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(hover: none)').matches;
+
+    if (isTouchDevice) return; // Skip animations on mobile
+
     const boxes = section.querySelectorAll('.pic-box');
 
     gsap.set(boxes, { opacity: 0, y: 60, scale: 0.95 });
