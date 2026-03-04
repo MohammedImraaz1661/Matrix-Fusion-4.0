@@ -25,19 +25,21 @@ const CoOd = () => {
             <div className="cood-row">
               <div className="cood-label">Staff</div>
               <div className="cood-content">
-                <h4>Abdul Majeed</h4>
+                <h4>Prasanna Kumar</h4>
+                <h4>Abdul Majeed K M</h4>
                 <h4>Ramya A</h4>
-                <h4>Safmina PK</h4>
+                <h4>Safmina P K</h4>
               </div>
             </div>
           </div>
           <div className="heading-mask_el heading-mask_el__masking">
             <div className="cood-row text-dark">
-              <div className="cood-label">Staff</div>
+              <div className="cood-label">Department of</div>
               <div className="cood-content">
-                <h4>Abdul Majeed</h4>
-                <h4>Ramya A</h4>
-                <h4>Safmina PK</h4>
+                <h4>prasanna@yit.edu.in</h4>
+                <h4>abdulmajeed@yit.edu.in</h4>
+                <h4>ramya@yit.edu.in</h4>
+                <h4>safmina@yit.edu.in</h4>
               </div>
             </div>
           </div>
@@ -53,19 +55,19 @@ const CoOd = () => {
             <div className="cood-row">
               <div className="cood-label">Student</div>
               <div className="cood-content">
-                <h4>Vyshnav</h4>
-                <h4>Vaibhav</h4>
-                <h4>Saima</h4>
+                <h4>Vyshnav S Madhav</h4>
+                <h4>Vaibhav Rai A V</h4>
+                <h4>Saima Sharmin</h4>
               </div>
             </div>
           </div>
           <div className="heading-mask_el heading-mask_el__masking">
             <div className="cood-row text-dark">
-              <div className="cood-label">Student</div>
+              <div className="cood-label">AIML</div>
               <div className="cood-content">
-                <h4>Vyshnav</h4>
-                <h4>Vaibhav</h4>
-                <h4>Saima</h4>
+                <h4>+91 97787-53233</h4>
+                <h4>+91 95397-55923</h4>
+                <h4>+91 90081-87826</h4>
               </div>
             </div>
           </div>

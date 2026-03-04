@@ -8,11 +8,15 @@ import Header from './components/Header';
 import SocialIcons from './components/SocialIcons';
 import Hero from './components/Hero';
 import About from './components/About';
+import Flow from './components/Flow';
 import Domain from './components/Domain';
 import CoOd from './components/CoOd';
 import Pics from './components/Pics';
+import Prizes from './components/Prizes';
 import Collaboration from './components/Collaboration';
 import Footer from './components/Footer';
+import InteractiveGrid from './components/InteractiveGrid';
+import GradientBlinds from './components/GradientBlinds';
 
 import './App.css';
 
@@ -59,27 +63,6 @@ function App() {
         requestAnimationFrame(raf);
       }
       requestAnimationFrame(raf);
-
-      // Video source swap
-      const videoEl = document.getElementById('hero-bg-video');
-      if (videoEl) {
-        const pickSrc = () => window.innerWidth >= 1024
-          ? videoEl.dataset.srcDesktop
-          : videoEl.dataset.srcMobile;
-
-        videoEl.setAttribute('src', pickSrc());
-        videoEl.setAttribute('preload', 'auto');
-
-        let prevBreak = window.innerWidth >= 1024;
-        const handleResize = () => {
-          const nowBreak = window.innerWidth >= 1024;
-          if (nowBreak !== prevBreak) {
-            videoEl.setAttribute('src', pickSrc());
-            prevBreak = nowBreak;
-          }
-        };
-        window.addEventListener('resize', handleResize);
-      }
 
       // Custom Cursor
       if (!isTouch) {
@@ -196,7 +179,7 @@ function App() {
 
       // Section Reveal Animations (desktop only)
       if (!isTouch) {
-        const sections = document.querySelectorAll('.about-section, .domain-section, .cood-section, .collab-section, .footer-section');
+        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .cood-section, .prizes-section, .collab-section, .footer-section');
         sections.forEach((section) => {
           gsap.set(section, { opacity: 0, y: 50 });
           gsap.to(section, {
@@ -224,18 +207,22 @@ function App() {
           {/* Custom Cursor */}
           <div className="custom-cursor" id="custom-cursor"></div>
 
-          {/* Video Background */}
+          {/* Gradient Background */}
           <div className="video-bg-fixed" id="video-bg">
             <div className="video-scale-wrapper" id="video-scale">
-              <video
-                id="hero-bg-video"
-                autoPlay
-                muted
-                playsInline
-                loop
-                preload="none"
-                data-src-desktop="./desktop.mp4"
-                data-src-mobile="./mobile_compressed.mp4"
+              <GradientBlinds
+                gradientColors={['#b7ab98', '#eb5939']}
+                angle={0}
+                noise={0.15}
+                blindCount={14}
+                blindMinWidth={40}
+                mouseDampening={0.12}
+                spotlightRadius={0.6}
+                spotlightSoftness={1.2}
+                spotlightOpacity={0.8}
+                distortAmount={0}
+                shineDirection="left"
+                mixBlendMode="normal"
               />
             </div>
           </div>
@@ -252,9 +239,12 @@ function App() {
             <Hero />
 
             <div className="below-fold">
+              <InteractiveGrid />
               <About />
+              <Flow />
               <Domain />
               <CoOd />
+              <Prizes />
               <Pics />
               <Collaboration />
               <Footer />

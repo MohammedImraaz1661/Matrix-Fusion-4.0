@@ -120,6 +120,11 @@ body::-webkit-scrollbar {
    inset: 0;
    z-index: 0;
    overflow: hidden;
+   will-change: transform;
+   -webkit-transform: translateZ(0);
+   transform: translateZ(0);
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
 }
 
 .video-scale-wrapper {
@@ -140,14 +145,14 @@ body::-webkit-scrollbar {
    content: '';
    position: absolute;
    inset: 0;
-   background: radial-gradient(ellipse at 65% 35%, #1c1a2e 0%, #0d0d0d 65%);
+   background: radial-gradient(ellipse at 65% 35%, #1a1610 0%, #0d0d0d 65%);
    z-index: -1;
 }
 
 .video-overlay {
    position: fixed;
    inset: 0;
-   background: rgba(13, 13, 13, 0.55);
+   background: rgba(13, 13, 13, 0.35);
    z-index: 1;
    pointer-events: none;
 }
@@ -337,7 +342,44 @@ body::-webkit-scrollbar {
    background-color: #0d0d0d;
 }
 
+.interactive-grid-canvas {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   pointer-events: none;
+   z-index: 0;
+}
+
+@media (max-width: 768px) {
+   .interactive-grid-canvas {
+      display: none;
+   }
+}
+
+/* Mobile background (LightPillar) — hidden on desktop */
+.mobile-bg-wrapper {
+   display: none;
+}
+
+@media (max-width: 768px) {
+   .mobile-bg-wrapper {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+   }
+}
+
 .below-fold>section {
+   position: relative;
+   z-index: 1;
    will-change: transform, opacity;
 }
 
@@ -374,7 +416,7 @@ body::-webkit-scrollbar {
 
 .about-text {
    font-family: var(--font-display);
-   font-size: 3rem;
+   font-size: 3.4rem;
    font-weight: 700;
    line-height: 1.15;
    color: var(--color-text);
@@ -399,6 +441,234 @@ body::-webkit-scrollbar {
       max-width: 100%;
       font-size: 1.6rem;
       line-height: 1.18;
+   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLOW (EVENT TIMELINE) SECTION
+═══════════════════════════════════════════════════════════ */
+.flow-section {
+   padding: 12vh clamp(1.25rem, 8vw, 8rem);
+   max-width: 100%;
+   margin: 0 auto;
+}
+
+.flow-timeline {
+   position: relative;
+   margin-top: 3rem;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   max-width: 1100px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/* Center vertical line */
+.flow-line {
+   position: absolute;
+   left: 50%;
+   top: -4rem;
+   bottom: -4rem;
+   width: 1px;
+   background-color: hsla(37, 18%, 66%, 0.25);
+   transform: translateX(-50%);
+   z-index: 0;
+}
+
+/* Masking wrapper */
+.flow-mask {
+   position: relative;
+   width: 45%;
+   z-index: 1;
+}
+
+.flow-mask--left {
+   align-self: flex-start;
+}
+
+.flow-mask--right {
+   align-self: flex-end;
+}
+
+/* Base layer (title) */
+.flow-mask_deep {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   cursor: pointer;
+   z-index: 1;
+}
+
+/* Reveal layer (description on hover) */
+.flow-mask_reveal {
+   position: relative;
+   pointer-events: none;
+   z-index: 2;
+   transition: clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      -webkit-clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Left boxes: slide from right → left */
+.flow-mask--left .flow-mask_reveal {
+   clip-path: inset(0 0 0 100%);
+   -webkit-clip-path: inset(0 0 0 100%);
+}
+
+/* Right boxes: slide from left → right */
+.flow-mask--right .flow-mask_reveal {
+   clip-path: inset(0 100% 0 0);
+   -webkit-clip-path: inset(0 100% 0 0);
+}
+
+/* Hover state: reveal fully */
+.flow-mask.is-hover .flow-mask_reveal {
+   clip-path: inset(0);
+   -webkit-clip-path: inset(0);
+   transition: clip-path 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+      -webkit-clip-path 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Card styling */
+.flow-card {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 205px;
+   padding: 2rem 1.5rem;
+}
+
+/* Left card: border on the right (connects to center line) */
+.flow-card--left {
+   border-right: 1px solid hsla(37, 18%, 66%, 0.35);
+}
+
+/* Right card: border on the left */
+.flow-card--right {
+   border-left: 1px solid hsla(37, 18%, 66%, 0.35);
+}
+
+/* Accent (revealed) card */
+.flow-card--accent {
+   background-color: var(--color-accent);
+}
+
+.flow-card--accent.flow-card--left {
+   border-right-color: var(--color-accent);
+}
+
+.flow-card--accent.flow-card--right {
+   border-left-color: var(--color-accent);
+}
+
+.flow-card-title {
+   font-family: var(--font-mono);
+   font-size: 1.35rem;
+   font-weight: 400;
+   color: var(--color-text);
+   letter-spacing: 0.03em;
+   text-align: center;
+}
+
+.flow-card-desc {
+   font-family: var(--font-display);
+   font-size: 1.5rem;
+   font-weight: 400;
+   color: var(--color-dark);
+   line-height: 1.5;
+   text-align: center;
+}
+
+@media (max-width: 1200px) {
+   .flow-mask {
+      width: 48%;
+   }
+
+   .flow-card {
+      min-height: 130px;
+      padding: 1.5rem 1.25rem;
+   }
+
+   .flow-card-title {
+      font-size: 1.2rem;
+   }
+
+   .flow-card-desc {
+      font-size: 1rem;
+   }
+}
+
+@media (max-width: 768px) {
+   .flow-section {
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+   }
+
+   .flow-timeline {
+      margin-top: 2rem;
+      gap: 0;
+   }
+
+   .flow-line {
+      display: none;
+   }
+
+   .flow-mask {
+      width: 100%;
+      padding-left: 1.5rem;
+   }
+
+   .flow-mask--right {
+      align-self: flex-start;
+   }
+
+   /* Hide title layer on mobile — no cursor to hover */
+   .flow-mask_deep {
+      display: none;
+   }
+
+   /* Show description layer always — no clip-path */
+   .flow-mask_reveal {
+      pointer-events: auto;
+   }
+
+   .flow-mask--left .flow-mask_reveal,
+   .flow-mask--right .flow-mask_reveal {
+      clip-path: none;
+      -webkit-clip-path: none;
+   }
+
+   /* Remove accent background on mobile — keep dark theme */
+   .flow-card--accent {
+      background-color: transparent;
+   }
+
+   .flow-card--left,
+   .flow-card--right {
+      border-right: none;
+      border-left: 1px solid hsla(37, 18%, 66%, 0.35);
+   }
+
+   .flow-card--accent.flow-card--left,
+   .flow-card--accent.flow-card--right {
+      border-left-color: hsla(37, 18%, 66%, 0.35);
+   }
+
+   .flow-card {
+      min-height: auto;
+      padding: 1.5rem 1rem;
+      justify-content: flex-start;
+   }
+
+   .flow-card-desc {
+      font-size: 1.1rem;
+      text-align: left;
+      color: var(--color-text);
+      opacity: 0.85;
    }
 }
 
@@ -536,7 +806,7 @@ body::-webkit-scrollbar {
 
 .cood-label {
    font-family: var(--font-display);
-   font-size: 2.6rem;
+   font-size: 3.2rem;
    font-weight: 700;
    color: var(--color-text);
 }
@@ -547,7 +817,7 @@ body::-webkit-scrollbar {
 
 .cood-content {
    font-family: var(--font-display);
-   font-size: 1.5rem;
+   font-size: 1.7rem;
    font-weight: 400;
    color: var(--color-text);
    opacity: 0.8;
@@ -594,6 +864,111 @@ body::-webkit-scrollbar {
    .cood-content {
       font-size: 1rem;
       gap: 1rem;
+   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRIZES SECTION
+═══════════════════════════════════════════════════════════ */
+.prizes-section {
+   padding: 12vh clamp(1.25rem, 8vw, 8rem);
+   max-width: 100%;
+   margin: 0 auto;
+}
+
+.prizes-list {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2rem;
+   margin-top: 3rem;
+}
+
+.prizes-list .heading-mask {
+   border-top: 1px solid hsla(37, 18%, 66%, 0.15);
+   border-bottom: 1px solid hsla(37, 18%, 66%, 0.15);
+}
+
+.prize-row {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 280px;
+   padding: 2rem 1rem;
+}
+
+.prize-label {
+   font-family: var(--font-mono);
+   font-size: 1.25rem;
+   font-weight: 400;
+   color: var(--color-text);
+   letter-spacing: 0.05em;
+}
+
+.prize-amount {
+   font-family: var(--font-display);
+   font-size: 2.2rem;
+   font-weight: 700;
+   color: var(--color-text);
+   margin-top: 0.5rem;
+}
+
+.text-dark .prize-label,
+.text-dark .prize-amount {
+   color: var(--color-dark);
+}
+
+/* Mobile layout — hidden on desktop */
+.prizes-mobile {
+   display: none;
+}
+
+@media (max-width: 1200px) {
+   .prize-row {
+      height: 240px;
+   }
+}
+
+@media (max-width: 768px) {
+   .prizes-section {
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+   }
+
+   /* Hide hover-based layout on mobile */
+   .prizes-list {
+      display: none;
+   }
+
+   /* Show direct layout on mobile */
+   .prizes-mobile {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+   }
+
+   .prize-mobile-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-top: 1px solid hsla(37, 18%, 66%, 0.15);
+   }
+
+   .prize-mobile-card:last-child {
+      border-bottom: 1px solid hsla(37, 18%, 66%, 0.15);
+   }
+
+   .prize-mobile-card .prize-label {
+      font-size: 1.1rem;
+   }
+
+   .prize-mobile-card .prize-amount {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 0;
    }
 }
 
@@ -914,5 +1289,17 @@ body::-webkit-scrollbar {
 @media (hover: none) {
    .video-scale-wrapper {
       transform: scale(1) !important;
+   }
+
+   .video-bg-fixed {
+      position: absolute;
+      height: 100vh;
+      height: 100svh;
+   }
+
+   .video-overlay {
+      position: absolute;
+      height: 100vh;
+      height: 100svh;
    }
 }

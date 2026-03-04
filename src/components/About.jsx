@@ -8,7 +8,7 @@ const About = () => {
         <p className="about-text js-cursor-extend">
           Matrix Fusion 4.<span className="text-accent">0</span> is a national-level hackathon 
           organized by Yenepoya Institute of Technology, Moodbidri under the{' '}
-          <span className="text-accent">Department of Artificial Intelligence and Machine Learning — YEN ARTIFICIA</span>, focused on 
+          <span className="text-accent">Department of Artificial Intelligence and Machine Learning — YEN ARTIFICIA, Student Association of AIML</span>, focused on 
           innovation, collaboration, and real-world <span className="text-accent">problem solving.</span>
         </p>
       </div>

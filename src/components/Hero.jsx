@@ -16,7 +16,13 @@ const Hero = () => {
           </div>
         </div>
         <p className="hero-tagline">
-          where coding meets <span>AI.</span>
+          TECHNICAL <span>PARTNER</span>
+        </p>
+        <div className="hero-sponsor-box">
+          <img src="./kokosai.png" alt="Kokosai" />
+        </div>
+        <p className="hero-tagline">
+          WHERE CODING MEETS <span>AI.</span>
         </p>
       </div>
     </section>
