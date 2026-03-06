@@ -7,6 +7,9 @@ const Header = () => {
         <div className="header-logo js-cursor-extend-sm">
           <img src="MF 4.0 Logo.png" alt="Matrix Fusion 4.0 Logo" />
         </div>
+        <div className="header-center-logo">
+          <img src="Artics-removebg-preview.png" alt="Yen-Artics Logo" />
+        </div>
         <nav className="header-nav">
           <a href="#about" className="js-cursor-contract">
             <span className="nav-item-inner">

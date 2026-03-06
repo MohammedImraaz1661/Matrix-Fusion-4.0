@@ -25,8 +25,9 @@
 
 .hero-pretitle {
   font-family: var(--font-display);
-  font-size: clamp(0.55rem, 2.5vw, 0.9rem);
+  font-size: clamp(0.55rem, 2.5vw, 1rem);
   letter-spacing: 0.18em;
+  font-weight: 600;
   text-transform: uppercase;
   color: #b7ab98;
   margin-bottom: 1rem;
@@ -43,7 +44,7 @@
 .title-big {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(3.8rem, 22vw, 15rem);
+  font-size: clamp(3.8rem, 14.7vw, 13.5rem);
   text-transform: uppercase;
   letter-spacing: -0.02em;
   color: #b7ab98;
@@ -68,6 +69,7 @@
   color: #b7ab98;
   margin-top: 1.5rem;
   opacity: 0.75;
+  font-weight: 600;
 }
 
 .hero-tagline span {
@@ -75,8 +77,8 @@
 }
 
 .hero-sponsor-box {
-  width: 18rem;
-  height: 12rem;
+  width: 12rem;
+  height: 8rem;
   background-color: #b7ab98;
   border-radius: 8px;
   padding: 0.9rem;
@@ -100,8 +102,8 @@
 
 @media (max-width: 1200px) {
   .hero-sponsor-box {
-    width: 15rem;
-    height: 10rem;
+    width: 10rem;
+    height: 7rem;
   }
 }
 

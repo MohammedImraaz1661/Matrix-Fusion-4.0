@@ -3,7 +3,7 @@ import React from 'react';
 const flowSteps = [
     {
         title: 'REGISTRATION',
-        desc: 'Teams register through the official website before March 20, 2026. Each team must consist of 2–4 members and complete submission details during registration under the open domain format.',
+        desc: 'Teams register through the official website before March 22, 2026. Each team must consist of 2–4 members and complete submission details during registration under the open domain format.',
         side: 'left',
     },
     {
