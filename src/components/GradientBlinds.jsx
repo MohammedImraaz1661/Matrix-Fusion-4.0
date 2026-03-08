@@ -11,7 +11,7 @@ const hexToRGB = hex => {
     return [r, g, b];
 };
 const prepStops = stops => {
-    const base = (stops && stops.length ? stops : ['#b7ab98', '#eb5939']).slice(0, MAX_COLORS);
+    const base = (stops && stops.length ? stops : ['#EDF2FB', '#5F1C9B']).slice(0, MAX_COLORS);
     if (base.length === 1) base.push(base[0]);
     while (base.length < MAX_COLORS) base.push(base[base.length - 1]);
     const arr = [];

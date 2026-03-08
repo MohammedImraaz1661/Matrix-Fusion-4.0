@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useRef } from 'react';
 
 const CELL_SIZE = 70;
-const GLOW_COLOR = { r: 183, g: 171, b: 152 }; // #b7ab98
+const GLOW_COLOR = { r: 95, g: 28, b: 155 }; // #5F1C9B
 const BORDER_ALPHA = 0.02;
 const PROXIMITY = 150;
-const HOVER_ALPHA = 0.30;
+const HOVER_ALPHA = 0.40;
 const FADE_SPEED = 0.04;
 
 /* ── Autonomous glow settings (mobile) ─────────────────── */
-const WANDER_SPEED = 0.6;           // px per frame
-const WANDER_RADIUS = 220;          // how far the point drifts
+const WANDER_SPEED = 0.6;
+const WANDER_RADIUS = 220;
 const MOBILE_PROXIMITY = 120;
 const MOBILE_HOVER_ALPHA = 0.18;
 
@@ -23,6 +23,30 @@ const InteractiveGrid = () => {
     const isTouchRef = useRef(false);
     const wanderRef = useRef({ x: 0, y: 0, angle: 0, cx: 0, cy: 0 });
 
+    /* Offscreen canvas caching static grid lines (rebuilt on resize) */
+    const gridImageRef = useRef(null);
+
+    const buildGridImage = useCallback(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const { rows, cols } = gridRef.current;
+        const offscreen = document.createElement('canvas');
+        offscreen.width = canvas.width;
+        offscreen.height = canvas.height;
+        const octx = offscreen.getContext('2d');
+        const borderStyle = `rgba(${GLOW_COLOR.r}, ${GLOW_COLOR.g}, ${GLOW_COLOR.b}, ${BORDER_ALPHA})`;
+        octx.strokeStyle = borderStyle;
+        octx.lineWidth = 0.5;
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+                const x = col * CELL_SIZE;
+                const y = row * CELL_SIZE;
+                octx.strokeRect(x + 0.5, y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
+            }
+        }
+        gridImageRef.current = offscreen;
+    }, []);
+
     const draw = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -34,12 +58,11 @@ const InteractiveGrid = () => {
         const proximity = isTouch ? MOBILE_PROXIMITY : PROXIMITY;
         const hoverAlpha = isTouch ? MOBILE_HOVER_ALPHA : HOVER_ALPHA;
 
-        /* ── Update wandering glow position on mobile ────── */
+        /* ── Update wandering glow on mobile ──────────────── */
         let mouse;
         if (isTouch) {
             const w = wanderRef.current;
             w.angle += WANDER_SPEED * 0.008;
-            // Gentle Lissajous-style drift
             w.x = w.cx + Math.sin(w.angle * 1.0) * WANDER_RADIUS;
             w.y = w.cy + Math.cos(w.angle * 0.7) * WANDER_RADIUS * 0.6;
             mouse = { x: w.x, y: w.y };
@@ -47,25 +70,38 @@ const InteractiveGrid = () => {
             mouse = mouseRef.current;
         }
 
-        // Only redraw the visible portion + buffer
-        const scrollY = scrollRef.current;
-        const viewH = window.innerHeight;
-        const startRow = Math.max(0, Math.floor((scrollY - proximity) / CELL_SIZE));
-        const endRow = Math.min(rows, Math.ceil((scrollY + viewH + proximity) / CELL_SIZE));
+        /* ── Determine which rows to compute glow for ──────
+           On mobile we skip the row-range optimisation entirely
+           because Lenis smooth-scroll can desync the native
+           scroll offset from the visual position, causing the
+           glow band to visibly jump. Mobile has fewer columns
+           so full-pass is cheap. Desktop keeps the optimisation. */
+        let startRow, endRow;
+        if (isTouch) {
+            startRow = 0;
+            endRow = rows;
+        } else {
+            const scrollY = scrollRef.current;
+            const viewH = window.innerHeight;
+            startRow = Math.max(0, Math.floor((scrollY - proximity) / CELL_SIZE));
+            endRow = Math.min(rows, Math.ceil((scrollY + viewH + proximity) / CELL_SIZE));
+        }
 
-        // Clear only visible area
-        ctx.clearRect(0, startRow * CELL_SIZE, canvas.width, (endRow - startRow) * CELL_SIZE);
+        // Clear full canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Pre-set stroke style once (same for all cells)
-        const borderStyle = `rgba(${GLOW_COLOR.r}, ${GLOW_COLOR.g}, ${GLOW_COLOR.b}, ${BORDER_ALPHA})`;
+        // Stamp the static grid lines (covers ALL rows)
+        if (gridImageRef.current) {
+            ctx.drawImage(gridImageRef.current, 0, 0);
+        }
 
+        // Compute & draw glow
         for (let row = startRow; row < endRow; row++) {
             for (let col = 0; col < cols; col++) {
                 const idx = row * cols + col;
                 const x = col * CELL_SIZE;
                 const y = row * CELL_SIZE;
 
-                // Calculate proximity to mouse / wander point
                 const cx = x + CELL_SIZE / 2;
                 const cy = y + CELL_SIZE / 2;
                 const dx = mouse.x - cx;
@@ -79,7 +115,6 @@ const InteractiveGrid = () => {
                     targetAlpha = Math.max(0, (1 - dist / proximity)) * 0.1;
                 }
 
-                // Smooth animation
                 if (alphas[idx] === undefined) alphas[idx] = 0;
                 if (alphas[idx] < targetAlpha) {
                     alphas[idx] = targetAlpha;
@@ -88,16 +123,10 @@ const InteractiveGrid = () => {
                     if (alphas[idx] < 0.001) alphas[idx] = 0;
                 }
 
-                // Draw glow fill
                 if (alphas[idx] > 0) {
                     ctx.fillStyle = `rgba(${GLOW_COLOR.r}, ${GLOW_COLOR.g}, ${GLOW_COLOR.b}, ${alphas[idx]})`;
                     ctx.fillRect(x, y, CELL_SIZE, CELL_SIZE);
                 }
-
-                // Draw grid lines
-                ctx.strokeStyle = borderStyle;
-                ctx.lineWidth = 0.5;
-                ctx.strokeRect(x + 0.5, y + 0.5, CELL_SIZE - 1, CELL_SIZE - 1);
             }
         }
 
@@ -123,7 +152,9 @@ const InteractiveGrid = () => {
             gridRef.current = { rows, cols };
             cellAlphasRef.current = new Array(rows * cols).fill(0);
 
-            // Centre the wander point in the visible area
+            // Rebuild the static grid image after resize
+            buildGridImage();
+
             if (isTouch) {
                 wanderRef.current.cx = canvas.width / 2;
                 wanderRef.current.cy = window.innerHeight / 2;
@@ -134,7 +165,6 @@ const InteractiveGrid = () => {
 
         resize();
 
-        /* ── Desktop: follow cursor ──────────────────────── */
         const handleMouseMove = (e) => {
             if (isTouch) return;
             const parent = canvas.parentElement;
@@ -156,13 +186,12 @@ const InteractiveGrid = () => {
             const rect = parent.getBoundingClientRect();
             scrollRef.current = -rect.top;
 
-            // On mobile, keep wander centre near the viewport
+            // Keep wander glow near current viewport on mobile
             if (isTouch) {
                 wanderRef.current.cy = -rect.top + window.innerHeight / 2;
             }
         };
 
-        /* ── Mobile: follow touch ────────────────────────── */
         const handleTouchMove = (e) => {
             if (!isTouch) return;
             const touch = e.touches[0];
@@ -170,7 +199,6 @@ const InteractiveGrid = () => {
             const parent = canvas.parentElement;
             if (!parent) return;
             const rect = parent.getBoundingClientRect();
-            // Snap the wander centre to touch position
             wanderRef.current.cx = touch.clientX - rect.left;
             wanderRef.current.cy = touch.clientY - rect.top;
         };
@@ -181,7 +209,6 @@ const InteractiveGrid = () => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
-        // Delayed resize to catch dynamic content height
         const resizeTimer = setTimeout(resize, 2000);
 
         animFrameRef.current = requestAnimationFrame(draw);
@@ -195,7 +222,7 @@ const InteractiveGrid = () => {
             clearTimeout(resizeTimer);
             if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
         };
-    }, [draw]);
+    }, [draw, buildGridImage]);
 
     return (
         <canvas

@@ -13,7 +13,7 @@ const CoOd = () => {
 
   return (
     <section className="cood-section" id="cood">
-      <span className="section-label js-cursor-extend-sm">CO-OD</span>
+      <span className="section-label js-cursor-extend-sm">ORGANIZING COMMITTEE</span>
       <div className="cood-list">
         {/* Staff Row */}
         <div className="heading-mask js-simple-masking_el">
@@ -58,6 +58,7 @@ const CoOd = () => {
                 <h4>Vyshnav S Madhav</h4>
                 <h4>Vaibhav Rai A V</h4>
                 <h4>Saima Sharmin</h4>
+                <h4>Aifa A</h4>
               </div>
             </div>
           </div>

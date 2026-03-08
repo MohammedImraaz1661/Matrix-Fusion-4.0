@@ -1,0 +1,54 @@
+.marquee-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-accent);
+    /* #5F1C9B Purple */
+    color: #fbfaff;
+    /* White text */
+    padding: 0.6rem 0;
+    z-index: 9999;
+    /* Highest z-index to stay above everything */
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(251, 250, 255, 0.1);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+}
+
+.marquee-content {
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+    /* Initial gap before the clone starts */
+}
+
+.marquee-text {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.marquee-separator {
+    margin: 0 2rem;
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .marquee-container {
+        padding: 0.5rem 0;
+    }
+
+    .marquee-text {
+        font-size: 0.8rem;
+    }
+}

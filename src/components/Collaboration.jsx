@@ -16,7 +16,7 @@ const Collaboration = () => {
         <div className="sponsor-box">
           <img src="./IEEE Logo.png" alt="IEEE" />
         </div>
-        <div className="sponsor-box">
+        <div className="sponsor-box sponsor-box--purple">
           <img src="./clardo.png" alt="Clardo" />
         </div>
       </div>

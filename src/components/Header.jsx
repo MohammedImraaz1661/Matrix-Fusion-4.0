@@ -25,8 +25,8 @@ const Header = () => {
           </a>
           <a href="#cood" className="js-cursor-contract">
             <span className="nav-item-inner">
-              <span className="nav-item-link nav-item-link__default">CO-OD'S</span>
-              <span className="nav-item-link nav-item-link__active">CO-OD'S</span>
+              <span className="nav-item-link nav-item-link__default">ORGANIZERS</span>
+              <span className="nav-item-link nav-item-link__active">ORGANIZERS</span>
             </span>
           </a>
           <a href="#pics" className="js-cursor-contract">

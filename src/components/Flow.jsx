@@ -71,6 +71,11 @@ const Flow = () => {
                     </div>
                 ))}
             </div>
+            <div className="flow-cta">
+                <a href="./MatrixFusion 4.0 PPT.pptx" download className="register_link">
+                    <span className="js-cursor-extend-sm">PPT TEMPLATE</span>
+                </a>
+            </div>
         </section>
     );
 };

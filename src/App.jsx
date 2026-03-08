@@ -17,6 +17,8 @@ import Collaboration from './components/Collaboration';
 import Footer from './components/Footer';
 import InteractiveGrid from './components/InteractiveGrid';
 import GradientBlinds from './components/GradientBlinds';
+import Map from './components/Map';
+import Marquee from './components/Marquee';
 
 import './App.css';
 
@@ -179,7 +181,7 @@ function App() {
 
       // Section Reveal Animations (desktop only)
       if (!isTouch) {
-        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .cood-section, .prizes-section, .collab-section, .footer-section');
+        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .cood-section, .prizes-section, .collab-section, .map-section, .footer-section');
         sections.forEach((section) => {
           gsap.set(section, { opacity: 0, y: 50 });
           gsap.to(section, {
@@ -193,6 +195,17 @@ function App() {
               toggleActions: 'play none none none',
             },
           });
+        });
+      }
+
+      // Toggle fixed-element colors when scrolling past the hero
+      const heroEl = document.getElementById('hero-section');
+      if (heroEl) {
+        ScrollTrigger.create({
+          trigger: heroEl,
+          start: 'bottom top',
+          onEnter: () => document.documentElement.classList.add('scrolled-past-hero'),
+          onLeaveBack: () => document.documentElement.classList.remove('scrolled-past-hero'),
         });
       }
     }
@@ -211,7 +224,7 @@ function App() {
           <div className="video-bg-fixed" id="video-bg">
             <div className="video-scale-wrapper" id="video-scale">
               <GradientBlinds
-                gradientColors={['#b7ab98', '#eb5939']}
+                gradientColors={['#EDF2FB', '#5F1C9B']}
                 angle={0}
                 noise={0.15}
                 blindCount={14}
@@ -227,6 +240,9 @@ function App() {
             </div>
           </div>
           <div className="video-overlay"></div>
+
+          {/* Marquee Banner */}
+          <Marquee />
 
           {/* Main Content */}
           <div id="main">
@@ -247,6 +263,7 @@ function App() {
               <Prizes />
               <Pics />
               <Collaboration />
+              <Map />
               <Footer />
             </div>
           </div>
