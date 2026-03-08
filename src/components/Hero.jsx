@@ -22,7 +22,7 @@ const Hero = () => {
           <img src="./kokosai.png" alt="Kokosai" />
         </div>
         <p className="hero-tagline">
-          WHERE CODING MEETS <span>AI.</span>
+          WHERE CODING MEETS <span>AI & ML.</span>
         </p>
       </div>
     </section>

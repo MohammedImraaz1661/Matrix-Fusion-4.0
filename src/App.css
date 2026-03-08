@@ -295,6 +295,11 @@ body::-webkit-scrollbar {
       display: none;
    }
 
+   /* Prevent default layer from moving up on touch */
+   .header-nav a:hover .nav-item-link__default {
+      transform: none;
+   }
+
    .nav-item-link__default {
       opacity: 0.8;
    }
@@ -822,9 +827,19 @@ body::-webkit-scrollbar {
    padding: 1rem 1rem;
 }
 
-.register_link span:hover {
-   color: #fbfaff;
-   background-color: #5F1C9B;
+/* .register_link span:hover { */
+/* color: #fbfaff; */
+/* background-color: #5F1C9B; */
+/* } */
+
+.link-closed {
+   font-family: var(--font-mono);
+   font-size: clamp(0.6rem, 2vw, 0.8rem);
+   font-weight: 500;
+   letter-spacing: 0.25em;
+   text-transform: uppercase;
+   color: var(--color-text);
+   margin-top: clamp(1.5rem, 3vw, 2rem);
 }
 
 @media (max-width: 768px) {

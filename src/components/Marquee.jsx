@@ -49,11 +49,11 @@ const Marquee = () => {
         <div className="marquee-container">
             <div className="marquee-track" ref={marqueeRef}>
                 <div className="marquee-content" ref={contentRef}>
-                    <span className="marquee-text">1ST SHORTLISTING STAGE WILL BE LIVE SOON</span>
+                    <span className="marquee-text">PROBLEM STATEMENTS FOR THE SHORTLISTING ROUND WILL BE LIVE SOON</span>
                     <span className="marquee-separator">•</span>
-                    <span className="marquee-text">1ST SHORTLISTING STAGE WILL BE LIVE SOON</span>
+                    <span className="marquee-text">PROBLEM STATEMENTS FOR THE SHORTLISTING ROUND WILL BE LIVE SOON</span>
                     <span className="marquee-separator">•</span>
-                    <span className="marquee-text">1ST SHORTLISTING STAGE WILL BE LIVE SOON</span>
+                    <span className="marquee-text">PROBLEM STATEMENTS FOR THE SHORTLISTING ROUND WILL BE LIVE SOON</span>
                     <span className="marquee-separator">•</span>
                 </div>
             </div>
