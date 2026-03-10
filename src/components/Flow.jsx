@@ -3,32 +3,32 @@ import React from 'react';
 const flowSteps = [
     {
         title: 'REGISTRATION',
-        desc: 'Teams register through the official website before March 22, 2026. Each team must consist of 2–4 members and complete submission details during registration under the open domain format.',
+        desc: 'Teams register through the google form before the deadline, forming groups of 2–4 members. No fee required for first round shortlisting.',
         side: 'left',
     },
     {
-        title: 'INITIAL IDEA SUBMISSION',
-        desc: 'Registered teams submit a brief concept presentation (maximum 4 slides) outlining their proposed solution. Submissions are evaluated for clarity, feasibility, and innovation.',
+        title: 'IDEA SUBMISSION',
+        desc: 'Registered teams submit their idea as a PPT presentation along with a 500-word abstract using the official template provided on the website and Google Form. Submissions are evaluated by expert panels.',
         side: 'right',
     },
     {
-        title: 'SHORTLISTING & CONFIRMATION',
+        title: 'SHORTLISTING',
         desc: 'Based on evaluation, the top 20 teams are shortlisted and notified. Selected teams confirm participation and proceed to the next stage.',
         side: 'left',
     },
     {
-        title: 'FINAL PROPOSAL SUBMISSION',
-        desc: 'Shortlisted teams submit a refined project presentation (maximum 5 slides) clearly detailing their concept, objectives, and implementation strategy before the final round.',
+        title: 'FINAL ROUND CONFIRMATION',
+        desc: 'Selected teams complete final registration by paying the ₹600 team fee. A concessional fee of ₹300 per team applies if at least one member is an IEEE or ISTE member.',
         side: 'right',
     },
     {
-        title: 'FINAL HACKATHON',
-        desc: 'The offline hackathon begins with verification and inauguration on April 1. Teams work on the on-spot problem statement, with final presentations and judging conducted on April 2.',
+        title: 'GRAND FINALE - HACKATHON ',
+        desc: 'Participants report onsite for registration and verification, followed by inauguration and team briefing. The hackathon begins with an on-spot problem statement and continues through intensive build sessions from April 1st to April 2nd 2026.',
         side: 'left',
     },
     {
         title: 'EVALUATION & RESULT',
-        desc: 'Projects are evaluated based on innovation, technical execution, feasibility, and impact. Winners are announced and recognized for their outstanding solutions.',
+        desc: 'Teams present their solutions before the judging panel on the final day. Evaluation concludes with the valedictory session and announcement of results.',
         side: 'right',
     },
 ];
@@ -71,11 +71,11 @@ const Flow = () => {
                     </div>
                 ))}
             </div>
-            <div className="flow-cta">
+            {/* <div className="flow-cta">
                 <a href="./MatrixFusion 4.0 PPT.pptx" download className="register_link">
                     <span className="js-cursor-extend-sm">PPT TEMPLATE</span>
                 </a>
-            </div>
+            </div> */}
         </section>
     );
 };

@@ -109,7 +109,7 @@
 
 @media (max-width: 768px) {
 
-  .title-big{
+  .title-big {
     font-size: 5rem;
   }
 
@@ -123,5 +123,45 @@
 
   .hero-tagline {
     margin-top: 1rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO REGISTER BUTTON
+═══════════════════════════════════════════════════════════ */
+.hero-register-btn {
+  display: inline-block;
+  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(2rem, 4vw, 3.5rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fbfaff;
+  border: 0.15rem solid #fbfaff;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-register-btn:hover {
+  color: #fbfaff;
+  background-color: #5F1C9B;
+  border-color: #5F1C9B;
+}
+
+@media (max-width: 768px) {
+  .hero-register-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-register-btn {
+    margin-top: 1.25rem;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.7rem;
   }
 }

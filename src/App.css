@@ -176,8 +176,7 @@ body::-webkit-scrollbar {
 ═══════════════════════════════════════════════════════════ */
 .site-header {
    position: fixed;
-   top: 36px;
-   /* Space for the marquee banner */
+   top: 0;
    left: 0;
    width: 100%;
    z-index: 100;
@@ -338,6 +337,18 @@ body::-webkit-scrollbar {
    z-index: 100;
 }
 
+@media (min-width: 1440px) {
+   .social-fixed {
+      bottom: clamp(2.5rem, 3vw, 4.5rem);
+      left: clamp(2.5rem, 3vw, 4.5rem);
+      gap: clamp(0.9rem, 1vw, 1.4rem);
+   }
+
+   .social-fixed a {
+      font-size: clamp(2.5rem, 2.5vw, 3.5rem);
+   }
+}
+
 .social-fixed a {
    text-decoration: none;
    color: #fbfaff;
@@ -373,6 +384,13 @@ body::-webkit-scrollbar {
    right: 2.5rem;
    z-index: 100;
    text-decoration: none;
+}
+
+@media (min-width: 1440px) {
+   .brochure-fixed {
+      bottom: clamp(2.5rem, 3vw, 4.5rem);
+      right: clamp(2.5rem, 3vw, 4.5rem);
+   }
 }
 
 .brochure-fixed span {
@@ -494,7 +512,7 @@ body::-webkit-scrollbar {
 ═══════════════════════════════════════════════════════════ */
 .section-label {
    font-family: var(--font-mono);
-   font-size: 0.8rem;
+   font-size: 1.1rem;
    font-weight: 500;
    letter-spacing: 0.25em;
    text-transform: uppercase;
@@ -502,6 +520,12 @@ body::-webkit-scrollbar {
    opacity: 0.5;
    display: block;
    margin-bottom: 2.5rem;
+}
+
+@media (max-width:768px) {
+   .section-label {
+      font-size: 1rem;
+   }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -666,9 +690,9 @@ body::-webkit-scrollbar {
 
 .flow-card-title {
    font-family: var(--font-mono);
-   font-size: 1.35rem;
+   font-size: 1.55rem;
    font-weight: 400;
-   color: var(--color-text);
+   color: var(--color-accent);
    letter-spacing: 0.03em;
    text-align: center;
 }
@@ -827,10 +851,10 @@ body::-webkit-scrollbar {
    padding: 1rem 1rem;
 }
 
-/* .register_link span:hover { */
-/* color: #fbfaff; */
-/* background-color: #5F1C9B; */
-/* } */
+.register_link span:hover {
+   color: #fbfaff;
+   background-color: #5F1C9B;
+}
 
 .link-closed {
    font-family: var(--font-mono);
@@ -859,8 +883,41 @@ body::-webkit-scrollbar {
    .register_link span {
       font-size: 1rem;
       border: .2rem #5F1C9B solid;
-      padding: 1rem 1rem;
+      padding: .8rem .6rem;
       margin-top: 2rem;
+   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   IDEA SUBMISSION SECTION
+═══════════════════════════════════════════════════════════ */
+.idea-submission-section {
+   padding: 15vh clamp(1.25rem, 5vw, 5rem);
+   margin: 0 auto;
+}
+
+.submission-buttons {
+   display: flex;
+   gap: 2rem;
+   margin-top: 1rem;
+   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+   .idea-submission-section {
+      padding-top: 8vh;
+      padding-bottom: 8vh;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+   }
+
+   .submission-buttons {
+      gap: 1rem;
+      margin-top: 0;
+   }
+
+   .submission-buttons .register_link span {
+      padding: .7rem .6rem;
    }
 }
 

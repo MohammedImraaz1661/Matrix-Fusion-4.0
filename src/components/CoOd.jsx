@@ -15,15 +15,39 @@ const CoOd = () => {
     <section className="cood-section" id="cood">
       <span className="section-label js-cursor-extend-sm">ORGANIZING COMMITTEE</span>
       <div className="cood-list">
-        {/* Staff Row */}
+        {/* Organizing Chair Row */}
         <div className="heading-mask js-simple-masking_el">
-          <div 
+          <div
             className="heading-mask_el heading-mask_el__deep"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <div className="cood-row">
-              <div className="cood-label">Staff</div>
+              <div className="cood-label">Organizing Chair</div>
+              <div className="cood-content">
+                <h4>Dr Rupinder Pal Singh</h4>
+              </div>
+            </div>
+          </div>
+          <div className="heading-mask_el heading-mask_el__masking">
+            <div className="cood-row text-dark">
+              <div className="cood-label">Organizing Chair</div>
+              <div className="cood-content">
+                <h4>-</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Staff Row */}
+        <div className="heading-mask js-simple-masking_el">
+          <div
+            className="heading-mask_el heading-mask_el__deep"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="cood-row">
+              <div className="cood-label">Faculty</div>
               <div className="cood-content">
                 <h4>Prasanna Kumar</h4>
                 <h4>Abdul Majeed K M</h4>
@@ -47,7 +71,7 @@ const CoOd = () => {
 
         {/* Student Row */}
         <div className="heading-mask js-simple-masking_el">
-          <div 
+          <div
             className="heading-mask_el heading-mask_el__deep"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

@@ -19,7 +19,7 @@ const Prizes = () => {
 
     return (
         <section className="prizes-section" id="prizes-section">
-            <span className="js-cursor-extend-sm section-label">PRIZE'S</span>
+            <span className="js-cursor-extend-sm section-label">PRIZES</span>
             <div className="prizes-list">
                 {prizes.map((prize, i) => (
                     <div className="heading-mask js-simple-masking_el" key={i}>

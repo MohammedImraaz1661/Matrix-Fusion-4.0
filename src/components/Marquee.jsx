@@ -16,19 +16,30 @@ const Marquee = () => {
         const clone = content.cloneNode(true);
         marquee.appendChild(clone);
 
-        // Calculate the width of one set of content
-        const contentWidth = content.offsetWidth;
+        // Wait for fonts/layout to settle before initializing animation
+        const initAnimation = () => {
+            if (tweenRef.current) tweenRef.current.kill();
 
-        // Create the GSAP tween for infinite scrolling
-        // We move the container by exactly one content width, then reset instantly
-        tweenRef.current = gsap.to(marquee, {
-            x: -contentWidth,
-            ease: 'none',
-            duration: 15, // Adjust speed here
-            repeat: -1,
-        });
+            // Calculate the width of one set of content
+            const contentWidth = content.offsetWidth;
 
-        // Add hover pause/play listeners (only affects desktop/mouse users)
+            // Create the GSAP tween for infinite scrolling
+            tweenRef.current = gsap.to(marquee, {
+                x: -contentWidth,
+                ease: 'none',
+                duration: 15, // Slower speed
+                repeat: -1,
+            });
+        };
+
+        // Initialize and handle resize
+        initAnimation();
+
+        // Wait a bit for webfonts just in case, then recompute
+        const timer = setTimeout(initAnimation, 500);
+        window.addEventListener('resize', initAnimation);
+
+        // Add hover pause/play listeners
         const handleMouseEnter = () => tweenRef.current?.pause();
         const handleMouseLeave = () => tweenRef.current?.play();
 
@@ -37,9 +48,9 @@ const Marquee = () => {
         marqueeContainer.addEventListener('mouseleave', handleMouseLeave);
 
         return () => {
-            if (tweenRef.current) {
-                tweenRef.current.kill();
-            }
+            clearTimeout(timer);
+            window.removeEventListener('resize', initAnimation);
+            if (tweenRef.current) tweenRef.current.kill();
             marqueeContainer.removeEventListener('mouseenter', handleMouseEnter);
             marqueeContainer.removeEventListener('mouseleave', handleMouseLeave);
         };

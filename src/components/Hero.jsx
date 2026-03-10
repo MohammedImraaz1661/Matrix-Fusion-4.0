@@ -24,6 +24,14 @@ const Hero = () => {
         <p className="hero-tagline">
           WHERE CODING MEETS <span>AI & ML.</span>
         </p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdVRQIdBtHkKFEIgoKcIV07FcHz3z9T8a642Qp99xGa27WSgg/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-register-btn js-cursor-extend-sm"
+        >
+          REGISTER NOW
+        </a>
       </div>
     </section>
   );
