@@ -181,7 +181,7 @@ function App() {
 
       // Section Reveal Animations (desktop only)
       if (!isTouch) {
-        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .idea-submission-section, .cood-section, .prizes-section, .collab-section, .map-section, .footer-section');
+        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .idea-submission-section, .cood-section, .prizes-section, .collab-sponsored-wrapper, .map-section, .footer-section');
         sections.forEach((section) => {
           gsap.set(section, { opacity: 0, y: 50 });
           gsap.to(section, {

@@ -16,11 +16,11 @@ const IdeaSubmission = () => {
 
                 <div className="submission-buttons">
                     <a href="./MatrixFusion 4.0 PPT.pptx" download className="register_link">
-                        <span className="js-cursor-extend-sm">PPT TEMPLATE</span>
+                        <span className="js-cursor-extend-sm" id='template'>PPT TEMPLATE</span>
                     </a>
                     
                     <a href="https://forms.gle/wn5FHJFvPfm7UuSs7" target='_blank' rel='noopener noreferrer' className="register_link">
-                        <span className="js-cursor-extend-sm">SUBMIT ABSTRACT AND PPT</span>
+                        <span className="js-cursor-extend-sm" id='submit'>SUBMIT ABSTRACT AND PPT</span>
                     </a>
                 </div>
             </div>

@@ -25,7 +25,7 @@ const CoOd = () => {
             <div className="cood-row">
               <div className="cood-label">Organizing Chair</div>
               <div className="cood-content">
-                <h4>Dr Rupinder Pal Singh</h4>
+                <h4>Dr Rupinder Singh</h4>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ const CoOd = () => {
             <div className="cood-row text-dark">
               <div className="cood-label">Organizing Chair</div>
               <div className="cood-content">
-                <h4>-</h4>
+                <h4>HOD - AI&ML Department</h4>
               </div>
             </div>
           </div>

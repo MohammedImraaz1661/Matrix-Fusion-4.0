@@ -129,9 +129,16 @@
 /* ═══════════════════════════════════════════════════════════
    HERO REGISTER BUTTON
 ═══════════════════════════════════════════════════════════ */
+.hero-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.2rem);
+  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+}
+
 .hero-register-btn {
   display: inline-block;
-  margin-top: clamp(1.5rem, 3.5vw, 3rem);
   padding: clamp(0.75rem, 1.5vw, 1rem) clamp(2rem, 4vw, 3.5rem);
   font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.5vw, 1rem);
@@ -150,18 +157,73 @@
   border-color: #5F1C9B;
 }
 
+/* Dual button row */
+.hero-btn-row {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-secondary-btn {
+  display: inline-block;
+  padding: clamp(0.55rem, 1vw, 0.75rem) clamp(1.2rem, 2.5vw, 2rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1.1vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fbfaff;
+  border: 0.12rem solid white;
+  opacity: 0.85;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-secondary-btn:hover {
+  color: #fbfaff;
+  background-color: #5F1C9B;
+  border-color: #5F1C9B;
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
-  .hero-register-btn {
+  .hero-btn-group {
+    gap: 0.75rem;
     margin-top: 1.5rem;
+  }
+
+  .hero-register-btn {
     padding: 0.75rem 2rem;
     font-size: 0.75rem;
+  }
+
+  /* Stack buttons vertically on mobile */
+  .hero-btn-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .hero-secondary-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.65rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-register-btn {
-    margin-top: 1.25rem;
-    padding: 0.65rem 1.5rem;
+    margin-top: 0;
+    padding: 0.65rem 2.7rem;
     font-size: 0.7rem;
+  }
+
+  .hero-secondary-btn {
+    font-size: 0.62rem;
+    padding: 0.6rem 1.2rem;
   }
 }

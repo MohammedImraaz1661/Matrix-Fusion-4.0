@@ -64,6 +64,17 @@ const Pics = () => {
           <img src="./DSC_3867_compressed.jpg" alt="Event photo 5" loading="lazy" decoding="async" />
         </div>
       </div>
+      <div className="pics-grid">
+        <div className="pic-box">
+          <img src="./DSC_0586 (1).jpg" alt="Event photo 1" loading="lazy" decoding="async" />
+        </div>
+        <div className="pic-box">
+          <img src="./DSC_3560 (2).JPG" alt="Event photo 2" loading="lazy" decoding="async" />
+        </div>
+        <div className="pic-box">
+          <img src="./DSC_0624.JPG" alt="Event photo 3" loading="lazy" decoding="async" />
+        </div>
+      </div>
     </section>
   );
 };
