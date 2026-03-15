@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import InteractiveGrid from './components/InteractiveGrid';
 import GradientBlinds from './components/GradientBlinds';
 import Map from './components/Map';
+import FAQ from './components/FAQ';
 import IdeaSubmission from './components/IdeaSubmission';
 
 import './App.css';
@@ -181,7 +182,7 @@ function App() {
 
       // Section Reveal Animations (desktop only)
       if (!isTouch) {
-        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .idea-submission-section, .cood-section, .prizes-section, .collab-sponsored-wrapper, .map-section, .footer-section');
+        const sections = document.querySelectorAll('.about-section, .flow-section, .domain-section, .idea-submission-section, .cood-section, .prizes-section, .collab-sponsored-wrapper, .map-section, .faq-section, .footer-section');
         sections.forEach((section) => {
           gsap.set(section, { opacity: 0, y: 50 });
           gsap.to(section, {
@@ -262,6 +263,7 @@ function App() {
               <Pics />
               <Collaboration />
               <Map />
+              <FAQ />
               <Footer />
             </div>
           </div>
