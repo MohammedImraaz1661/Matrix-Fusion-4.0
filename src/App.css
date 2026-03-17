@@ -280,7 +280,7 @@ body::-webkit-scrollbar {
 @media (max-width: 768px) {
 
    .header-nav {
-      gap: 0.15rem;
+      gap: 0;
    }
 
    .header-nav a {

@@ -3,7 +3,7 @@ import './FAQ.css';
 
 const faqData = [
     {
-        question: "Do I need to be a coding expert to participate?",
+        question: "Do I need to know how to code?",
         answer: "No! We welcome all skill levels. Whether you’re a designer, manager, or a total beginner, there’s a place for you to learn and contribute."
     },
     {
@@ -24,10 +24,10 @@ const faqData = [
     },
     {
         question: "Are meals provided?",
-        answer: "What about dietary restrictions? Yes. We provide meals and snacks 24/7."
+        answer: "Yes. We provide meals and snacks 24/7."
     },
     {
-        question: "Can I sleep at the venue? What should I bring?",
+        question: "Can I sleep at the venue?",
         answer: "The venue stays open overnight. We provide separate power nap rooms for boys and girls."
     },
     {
@@ -44,15 +44,23 @@ const faqData = [
     },
     {
         question: "Is a College ID mandatory for entry?",
-        answer: "Yes. Please bring a valid College ID (or government photo ID) for check-in and security."
+        answer: "Yes. Please bring a valid College ID for check-in and security."
     },
     {
         question: "Registrations last date",
-        answer: "Both idea submission and registration final dates will be on the same day."
+        answer: "Although the last date of registration and of idea submission is the same, March 22nd 2026, They are seperate activities. Registration is currently open. An early registration by you will be useful to us."
     },
     {
-        question: "Students allowed to join with other colleges",
-        answer: "NO"
+        question: "Can a team formed of students from different colleges?",
+        answer: "No, a team has to be from a single institute"
+    },
+    {
+        question: "Will a panel of experts evaluate idea submission?",
+        answer: "Yes"
+    },
+    {
+        question: "Can an idea be submitted in related fields of AI&ML?",
+        answer: "Yes, though our focus is on AI&ML, we are open to ideas in related fields."
     }
 ];
 

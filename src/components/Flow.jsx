@@ -46,7 +46,7 @@ const Flow = () => {
 
     return (
         <section className="flow-section" id="flow-section">
-            <span className="section-label js-cursor-extend-sm">EVENT FLOW</span>
+            <span className="section-label js-cursor-extend-sm">ROADMAP</span>
             <div className="flow-timeline">
                 <div className="flow-line" />
                 {flowSteps.map((step, i) => (

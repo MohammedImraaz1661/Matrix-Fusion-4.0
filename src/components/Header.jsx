@@ -31,8 +31,26 @@ const Header = () => {
           </a>
           <a href="#pics" className="js-cursor-contract">
             <span className="nav-item-inner">
-              <span className="nav-item-link nav-item-link__default">PIC'S</span>
+              <span className="nav-item-link nav-item-link__default">GALLERY</span>
               <span className="nav-item-link nav-item-link__active">PIC'S</span>
+            </span>
+          </a>
+          <a href="#flow-section" className="js-cursor-contract">
+            <span className="nav-item-inner">
+              <span className="nav-item-link nav-item-link__default">ROADMAP</span>
+              <span className="nav-item-link nav-item-link__active">ROADMAP</span>
+            </span>
+          </a>
+          <a href="#domain" className="js-cursor-contract">
+            <span className="nav-item-inner">
+              <span className="nav-item-link nav-item-link__default">REGISTRATION</span>
+              <span className="nav-item-link nav-item-link__active">REGISTRATION</span>
+            </span>
+          </a>
+          <a href="#faq" className="js-cursor-contract">
+            <span className="nav-item-inner">
+              <span className="nav-item-link nav-item-link__default">FAQ</span>
+              <span className="nav-item-link nav-item-link__active">FAQ</span>
             </span>
           </a>
         </nav>
