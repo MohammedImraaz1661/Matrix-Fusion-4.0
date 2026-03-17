@@ -44,7 +44,7 @@ const Pics = () => {
 
   return (
     <section className="pics-section" id="pics" ref={sectionRef}>
-      <span className="js-cursor-extend-sm section-label">PICS</span>
+      <span className="js-cursor-extend-sm section-label">GALLERY</span>
       <div className="pics-grid">
         <div className="pic-box">
           <img src="./DSC_0457_compressed.jpg" alt="Event photo 1" loading="lazy" decoding="async" />

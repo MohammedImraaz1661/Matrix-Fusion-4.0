@@ -25,7 +25,7 @@ const CoOd = () => {
             <div className="cood-row">
               <div className="cood-label">Organizing Chair</div>
               <div className="cood-content">
-                <h4>Dr Rupinder Singh</h4>
+                <h4>Dr Rupinder Pal Singh - HOD, AI&ML</h4>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ const CoOd = () => {
             <div className="cood-row text-dark">
               <div className="cood-label">Organizing Chair</div>
               <div className="cood-content">
-                <h4>HOD - AI&ML Department</h4>
+                <h4>+91 99149-87826</h4>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ const CoOd = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div className="cood-row">
-              <div className="cood-label">Faculty</div>
+              <div className="cood-label">Faculty Members</div>
               <div className="cood-content">
                 <h4>Prasanna Kumar</h4>
                 <h4>Abdul Majeed K M</h4>
@@ -77,7 +77,7 @@ const CoOd = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div className="cood-row">
-              <div className="cood-label">Student</div>
+              <div className="cood-label">Student Members</div>
               <div className="cood-content">
                 <h4>Vyshnav S Madhav</h4>
                 <h4>Vaibhav Rai A V</h4>
