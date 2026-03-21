@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const TEXT = 'Registration has been extended upto 24th March 2026.';
+const TEXT = 'Registration and Idea Submission has been extended upto 24th March 2026.';
 const SEPARATOR = '\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0'; // spacing only
 
 const AnnouncementBanner = () => {
