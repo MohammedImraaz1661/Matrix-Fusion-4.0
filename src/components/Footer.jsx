@@ -4,7 +4,7 @@ const Footer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00' });
 
   useEffect(() => {
-    const targetDate = new Date(2026, 2, 22, 23, 59, 59); // March 31, 2026
+    const targetDate = new Date(2026, 2, 24, 23, 59, 59); // March 31, 2026
 
     const updateCountdown = () => {
       const now = new Date();
